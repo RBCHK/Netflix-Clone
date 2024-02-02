@@ -3,6 +3,9 @@ import axios from 'axios'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import { useCallback, useState } from 'react'
+import { FaGithub } from 'react-icons/fa'
+import { FcGoogle } from 'react-icons/fc'
+
 
 const Auth = () => {
     const router = useRouter()
@@ -81,6 +84,18 @@ const Auth = () => {
                         <button onClick={variant === 'register' ? register : login} className='bg-red-600 text-white py-3 rounded-md w-full mt-10 hover:bg-red-700 transition'>
                             {variant === 'login' ? 'Login' : 'Sigh up'}
                         </button>
+                        <div className='flex justify-center mt-8 gap-6 '>
+                            <div
+                                onClick={() => signIn('google', { callbackUrl: '/' })}
+                                className='w-10 h-10 bg-white rounded-full cursor-pointer hover:opacity-80 transition flex items-center justify-center'>
+                                <FcGoogle size={30}/>
+                            </div>
+                            <div
+                                onClick={() => signIn('github', { callbackUrl: '/' })}
+                                className='w-10 h-10 bg-white rounded-full cursor-pointer hover:opacity-80 transition flex items-center justify-center'>
+                                <FaGithub size={30}/>
+                            </div>
+                        </div>
                         <p className='text-neutral-500 mt-12'>
                             {variant === 'login' ? 'New to Netflix?' : 'Alrady have an accaunt?'}
                             <span onClick={toggleVariant} className='text-white m-2 hover:underline cursor-pointer'>
