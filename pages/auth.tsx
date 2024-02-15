@@ -1,14 +1,12 @@
 import Input from '@/components/Input'
 import axios from 'axios'
 import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/router'
 import { useCallback, useState } from 'react'
 import { FaGithub } from 'react-icons/fa'
 import { FcGoogle } from 'react-icons/fc'
 
 
 const Auth = () => {
-    const router = useRouter()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
@@ -23,14 +21,12 @@ const Auth = () => {
             await signIn('credentials', {
                 email,
                 password,
-                redirect: false,
-                callbackUrl: '/'
+                callbackUrl: '/profiles'
             })
-            router.push('/')
         } catch (e) {
             console.log(e)
         }
-    }, [email, password, router])
+    }, [email, password])
 
     const register = useCallback(async () => {
         try {
@@ -86,12 +82,12 @@ const Auth = () => {
                         </button>
                         <div className='flex justify-center mt-8 gap-6 '>
                             <div
-                                onClick={() => signIn('google', { callbackUrl: '/' })}
+                                onClick={() => signIn('google', { callbackUrl: '/profiles' })}
                                 className='w-10 h-10 bg-white rounded-full cursor-pointer hover:opacity-80 transition flex items-center justify-center'>
                                 <FcGoogle size={30}/>
                             </div>
                             <div
-                                onClick={() => signIn('github', { callbackUrl: '/' })}
+                                onClick={() => signIn('github', { callbackUrl: '/profiles' })}
                                 className='w-10 h-10 bg-white rounded-full cursor-pointer hover:opacity-80 transition flex items-center justify-center'>
                                 <FaGithub size={30}/>
                             </div>
