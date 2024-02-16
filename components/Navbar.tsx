@@ -1,10 +1,19 @@
 /* eslint-disable @next/next/no-img-element */
+import { useCallback, useState } from 'react';
 import { BsChevronDown } from "react-icons/bs";
 
 import MobileMenu from './MobileMenu';
 import NavbarItem from './NavbarItem';
 
+
+
 const Navbar = () => {
+    const [showMobileMenu, setShowMobileMenu] = useState(false)
+
+    const toggleMobileMenu = useCallback(() => {
+        setShowMobileMenu((current) => !current)
+    }, [])
+
     return (
         <nav className='w-full z-40 fixed'>
             <div className='px-4 md:px-16 py-6 flex flex-row items-center transition duration-500 bg-gray-900 bg-opacity-90'>
@@ -20,11 +29,13 @@ const Navbar = () => {
                     <NavbarItem label='My List'/>
                     <NavbarItem label='Browse by languages' />
                 </div>
-                <div className='ml-8 lg:hidden flex flex-row items-center gap-2 cursor-pointer relative'>
+                <div
+                    onClick={toggleMobileMenu}
+                    className='ml-8 lg:hidden flex flex-row items-center gap-2 cursor-pointer relative'>
                      <p className='text-white text-sm'>browser</p>
                      <BsChevronDown className='text-white transition'/>
                 </div>
-                <MobileMenu visible />
+                <MobileMenu visible={showMobileMenu} />
             </div>
         </nav>
     )
