@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useCallback, useState } from 'react';
-import { BsChevronDown } from "react-icons/bs";
+import { BsBell, BsChevronDown, BsSearch } from "react-icons/bs";
 
 import MobileMenu from './MobileMenu';
 import NavbarItem from './NavbarItem';
@@ -32,10 +32,24 @@ const Navbar = () => {
                 <div
                     onClick={toggleMobileMenu}
                     className='ml-8 lg:hidden flex flex-row items-center gap-2 cursor-pointer relative'>
-                     <p className='text-white text-sm'>browser</p>
+                     <p className='text-white text-sm'>Browse</p>
                      <BsChevronDown className='text-white transition'/>
                 </div>
                 <MobileMenu visible={showMobileMenu} />
+                <div className=' flex flex-row ml-auto items-center gap-7'>
+                    <div className='text-gray-200 cursor-pointer hover:text-gray-300'>
+                        <BsSearch />
+                    </div>
+                    <div className='text-gray-200 cursor-pointer hover:text-gray-300'>
+                        <BsBell />
+                    </div>
+                    <div className='flex flex-row items-center gap-2 cursor-pointer relative'>
+                        <div className='w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden'>
+                            <img src="images/default-green.png" alt="" />
+                        </div>
+                        <BsChevronDown className='text-white transition'/>
+                    </div>
+                </div>
             </div>
         </nav>
     )
