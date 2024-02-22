@@ -22,8 +22,6 @@ model User {
     favoriteIds String[] @db.ObjectId
     sessions Session[]
     accounts Account[]
-
-    @@map("user")
 }
 
 model Account {
@@ -43,7 +41,6 @@ model Account {
     user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
     @@unique([provider, providerAccountId])
-    @@map("account")
 }
 
 model Session {
