@@ -10,17 +10,23 @@ export default async function handler(
   if (req.method !== 'GET') return res.status(405).end();
 
   try {
-    const { currentUser } = await serverAuth(req);
+    await serverAuth(req);
 
-    const favoriteMovies = await prismadb.movie.findMany({
+    const { movieId } = req.query;
+
+    if (typeof movieId !== 'string') throw new Error('Invalid ID');
+
+    if (!movieId) throw new Error('Invalid ID');
+
+    const movie = await prismadb.movie.findUnique({
       where: {
-        id: {
-          in: currentUser?.favoriteIds,
-        },
+        id: movieId,
       },
     });
 
-    return res.status(200).json(favoriteMovies);
+    if (!movie) throw new Error('Invalid ID');
+
+    return res.status(200).json(movie);
   } catch (error) {
     console.log(error);
     return res.status(400).end();
