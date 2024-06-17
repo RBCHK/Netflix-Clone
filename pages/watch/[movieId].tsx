@@ -1,14 +1,13 @@
-import useMovie from '@/hooks/useMovie';
 import { useRouter } from 'next/router';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+
+import useMovie from '@/hooks/useMovie';
 
 const Watch = () => {
   const router = useRouter();
   const { movieId } = router.query;
-  console.log('movieId', movieId);
 
   const { data } = useMovie(movieId as string);
-  console.log('data--->', data);
 
   return (
     <div className="h-screen w-screen bg-black ">
