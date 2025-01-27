@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 
 import useCurrentUser from '@/hooks/useCurrentUser';
 
+//Routes protecting function
 export async function getServerSideProps(context: NextPageContext) {
   const session = await getSession(context);
 

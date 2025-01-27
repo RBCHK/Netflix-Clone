@@ -20,29 +20,47 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
   }, [currentUser, movieId]);
 
   const toggleFavorites = useCallback(async () => {
-    let response;
+    try {
+      let response;
 
-    if (isFavorite) {
-      response = await axios.delete('/api/favorite', { data: { movieId } });
-    } else {
-      response = await axios.post('/api/favorite', { movieId });
+      if (isFavorite) {
+        //console.log('Удаление', movieId);
+        response = await axios.delete('/api/favorite', { data: { movieId } });
+      } else {
+        console.log('Отправка POST запроса', movieId);
+        response = await axios.post(
+          '/api/favorite',
+          { movieId },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          }
+        );
+      }
+
+      if (response?.data?.favoriteIds) {
+        console.log('Обновленные favoriteIds:', response.data.favoriteIds);
+        const updatedFavoriteIds = response.data.favoriteIds;
+
+        mutate({
+          ...currentUser,
+          favoriteIds: updatedFavoriteIds,
+        });
+
+        mutateFavorites();
+      } else {
+        throw new Error('Ответ не содержит favoriteIds');
+      }
+    } catch (error) {
+      console.error('Error toggling favorites:', error);
     }
-
-    const updatedFavoriteIds = response?.data?.favoriteIds;
-
-    mutate({
-      ...currentUser,
-      favoriteIds: updatedFavoriteIds,
-    });
-
-    mutateFavorites();
   }, [movieId, isFavorite, currentUser, mutate, mutateFavorites]);
 
   const Icon = isFavorite ? AiOutlineCheck : AiOutlinePlus;
 
   return (
     <div
-      onClick={toggleFavorites}
       className="
         w-6
         h-6
@@ -58,8 +76,9 @@ const FavoriteButton: React.FC<FavoriteButtonProps> = ({ movieId }) => {
         transition
         cursor-pointer
       "
+      onClick={toggleFavorites}
     >
-      <Icon className="text-white" size={15} />
+      <Icon className="text-white" size={25} />
     </div>
   );
 };

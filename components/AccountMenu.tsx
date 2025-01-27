@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import useCurrentUser from '@/hooks/useCurrentUser';
 import { signOut } from 'next-auth/react';
 import React from 'react';
 
@@ -7,6 +8,7 @@ interface AccountMenuProps {
 }
 
 const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
+  const { data } = useCurrentUser();
   if (!visible) return null;
 
   return (
@@ -18,16 +20,14 @@ const AccountMenu: React.FC<AccountMenuProps> = ({ visible }) => {
             src="images/default-green.png"
             alt=""
           />
-          <p className="text-white text-sm group-hover/item:underline">
-            Username
-          </p>
+          <p className="text-white text-sm ">{data?.name}</p>
         </div>
         <hr className="bg-gray-600 h-px my-4 border-0" />
         <div
           onClick={() => signOut()}
           className="text-white text-sm text-center px-3 hover:underline"
         >
-          Sign out if Netflix
+          Sign out
         </div>
       </div>
     </div>
