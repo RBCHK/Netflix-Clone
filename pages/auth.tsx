@@ -1,10 +1,10 @@
-/* eslint-disable @next/next/no-img-element */
-import Input from '@/components/Input';
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
 import { useCallback, useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
+
+import Input from '@/components/Input';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
