@@ -11,11 +11,22 @@ const Watch = () => {
 
   return (
     <div className="h-screen w-screen bg-black ">
-      <nav className="fixed w-full p-4 z-10 flex items-center gap-8 bg-black bg-opacity-70">
+      <nav
+        className="
+        fixed
+        w-full
+        p-4
+        z-10
+        flex
+        items-center
+        gap-8
+        bg-black
+        bg-opacity-70"
+      >
         <AiOutlineArrowLeft
+          className="text-white cursor-pointer"
           onClick={() => router.push('/')}
           size={40}
-          className="text-white cursor-pointer"
         />
         <p className="text-white text-1xl md:text-3xl font-bold">
           <span className="font-light mr-1">Watching:</span>

@@ -8,10 +8,16 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  console.log('API endpoint hit');
   try {
     if (req.method === 'POST') {
       const { currentUser } = await serverAuth(req);
       const { movieId } = req.body;
+
+      if (!movieId) {
+        return res.status(400).json({ error: 'movieId is required' });
+      }
+
       const existingMovie = await prismadb.movie.findUnique({
         where: {
           id: movieId,
@@ -36,16 +42,16 @@ export default async function handler(
 
     if (req.method === 'DELETE') {
       const { currentUser } = await serverAuth(req);
+
       const { movieId } = req.body;
+
       const existingMovie = await prismadb.movie.findUnique({
         where: {
           id: movieId,
         },
       });
 
-      if (!existingMovie) {
-        throw new Error('Invalid ID');
-      }
+      if (!existingMovie) throw new Error('Invalid ID');
 
       const updatedFavoriteIds = without(currentUser.favoriteIds, movieId);
 
