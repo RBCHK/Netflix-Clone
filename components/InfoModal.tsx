@@ -8,7 +8,7 @@ import PlayButton from './PlayButton';
 
 interface InfoModalProps {
   visible?: boolean;
-  onClose: any;
+  onClose: () => void;
 }
 
 const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
@@ -46,6 +46,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
         fixed
         inset-0
       "
+      onClick={handleClose}
     >
       <div
         className="
@@ -56,6 +57,7 @@ const InfoModal: React.FC<InfoModalProps> = ({ visible, onClose }) => {
           rounded-md
           overflow-hidden
         "
+        onClick={(e) => e.stopPropagation()}
       >
         <div
           className={`

@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { BsBell, BsChevronDown, BsSearch } from 'react-icons/bs';
 
 import AccountMenu from './AccountMenu';
@@ -8,7 +8,16 @@ import NavbarItem from './NavbarItem';
 
 const TOP_OFFSET = 66;
 
-const Navbar = () => {
+const NAV_ITEMS: { label: string; href: string }[] = [
+  { label: 'Home', href: '/' },
+  { label: 'Series', href: '/series' },
+  { label: 'Films', href: '/films' },
+  //{ label: 'New & Popular', href: '/new-popular' },
+  { label: 'My List', href: '/my-list' },
+  //{ label: 'Browse by languages', href: '/languages' },
+];
+
+const Navbar: React.FC = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showeAccountMenu, setShoweAccountMenu] = useState(false);
   const [showNavbarBackground, setShowNavbarBackground] = useState(false);
@@ -52,12 +61,9 @@ const Navbar = () => {
       >
         <img className="h-4 lg:h-7" src="/images/logo.png" alt="Logo" />
         <div className="flex-row ml-8 gap-7 hidden lg:flex">
-          <NavbarItem label="Home" />
-          <NavbarItem label="Series" />
-          <NavbarItem label="Films" />
-          <NavbarItem label="New & Popular" />
-          <NavbarItem label="My List" />
-          <NavbarItem label="Browse by languages" />
+          {NAV_ITEMS.map(({ label, href }) => (
+            <NavbarItem key={label} label={label} href={href} />
+          ))}
         </div>
         <div
           onClick={toggleMobileMenu}

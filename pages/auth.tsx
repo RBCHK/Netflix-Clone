@@ -52,7 +52,7 @@ const Auth = () => {
         <div className="flex justify-center">
           <div className="bg-black bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
             <h2 className="text-white text-4xl mb-8 font-semibold">
-              {variant === 'login' ? 'Sign In' : 'Register'}
+              {variant === 'login' ? 'Sign In' : 'Sign Up'}
             </h2>
             <div className="flex flex-col gap-4">
               {variant === 'register' && (
@@ -83,7 +83,7 @@ const Auth = () => {
               onClick={variant === 'register' ? register : login}
               className="bg-red-600 text-white py-3 rounded-md w-full mt-10 hover:bg-red-700 transition"
             >
-              {variant === 'login' ? 'Login' : 'Sigh up'}
+              {variant === 'login' ? 'Sign In' : 'Sigh up'}
             </button>
             <div className="flex justify-center mt-8 gap-6 ">
               <div
@@ -99,7 +99,10 @@ const Auth = () => {
                 <FaGithub size={30} />
               </div>
             </div>
-            <p className="text-neutral-500 mt-12">
+            <div className="text-white mt-6 flex justify-center cursor-pointer">
+              Forgot password?
+            </div>
+            <div className="text-neutral-500 mt-12">
               {variant === 'login'
                 ? 'New to Netflix?'
                 : 'Alrady have an accaunt?'}
@@ -107,9 +110,14 @@ const Auth = () => {
                 onClick={toggleVariant}
                 className="text-white m-2 hover:underline cursor-pointer"
               >
-                {variant === 'login' ? 'Create an account' : 'Login'}
+                {variant === 'login' ? 'Sign up now.' : 'Sign In'}
               </span>
-            </p>
+            </div>
+            <div className="mt-6 text-neutral-500 text-xs">
+              This page is protected by Google reCAPTCHA to ensure you&apos;re
+              not a bot.
+              <span className="text-blue-600"> Learn more.</span>
+            </div>
           </div>
         </div>
       </div>

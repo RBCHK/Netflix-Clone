@@ -18,10 +18,13 @@ const Input: React.FC<InputProps> = ({ id, label, onChange, value, type }) => {
         type={type}
         className="
           block rounded-md
+          border-2
+          border-zinc-400
           px-6 pt-6 pb-1
           w-full
           text-md text-white
-          bg-neutral-700
+          bg-neutral-900
+          bg-opacity-70
           appearance-none
           focus:outline-none focus:ring-0
           peer
