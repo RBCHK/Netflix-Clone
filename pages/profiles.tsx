@@ -34,7 +34,7 @@ const Profiles = () => {
           Who is wathing?
         </h1>
         <div className="flex justify-center items-center gap-8 mt-10">
-          <div onClick={() => router.push('/')}>
+          <div onClick={() => router.push('/home')}>
             <div className="group flex-row w-44 mx-auto">
               <div
                 className="
