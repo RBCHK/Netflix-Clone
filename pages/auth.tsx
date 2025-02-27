@@ -5,7 +5,7 @@ import { useCallback, useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
-import Input from '@/components/Input';
+//import Input from '@/components/Input';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -62,7 +62,7 @@ const Auth = () => {
               {variant === 'login' ? 'Sign In' : 'Sign Up'}
             </h2>
             <div className="flex flex-col gap-4">
-              {variant === 'register' && (
+              {/*{variant === 'register' && (
                 <Input
                   className="
                 block 
@@ -87,8 +87,8 @@ const Auth = () => {
                   value={name}
                   type="name"
                 />
-              )}
-              <Input
+              )}*/}
+              {/*<Input
                 className="
                  block 
                  rounded-sm
@@ -137,7 +137,7 @@ const Auth = () => {
                 onChange={(e: any) => setPassword(e.target.value)}
                 value={password}
                 type="password"
-              />
+              />*/}
             </div>
             <button
               onClick={variant === 'register' ? register : login}
