@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { useRouter } from 'next/router';
 import Button from '../components/Button';
-//import Input from '../components/Input';
+import Input from '../components/Input';
 
 const Landing = () => {
   const [email, setEmail] = useState('');
@@ -67,31 +67,30 @@ const Landing = () => {
             </p>
 
             <div className="flex justify-between pt-4">
-              {/*<Input
-                className="
-                block 
-                rounded-sm
-                border
-                border-zinc-600
-                text-md 
-                text-white
-                bg-neutral-900
-                bg-opacity-70
-                appearance-none
-                focus:outline-none 
-                focus:ring-0
-                peer
-                px-6
-                pt-4
-                h-14
-                w-96
-                "
+              <Input
                 id="email"
                 label="Email address"
                 onChange={(e: any) => setEmail(e.target.value)}
                 value={email}
                 type="email"
-              />*/}
+                className="
+                 block 
+                 rounded-sm
+                 border
+                 border-zinc-600
+                 text-md 
+                 text-white
+                 bg-neutral-900
+                 bg-opacity-70
+                 appearance-none
+                 focus:outline-none 
+                 focus:ring-0
+                 peer
+                 px-6
+                 pt-4
+                 h-14
+                 w-96"
+              />
               <Button
                 className="
                 bg-red-600
