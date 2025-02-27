@@ -9,7 +9,7 @@ import NavbarItem from './NavbarItem';
 const TOP_OFFSET = 66;
 
 const NAV_ITEMS: { label: string; href: string }[] = [
-  { label: 'Home', href: '/' },
+  { label: 'Home', href: '/home' },
   { label: 'Series', href: '/series' },
   { label: 'Films', href: '/films' },
   //{ label: 'New & Popular', href: '/new-popular' },

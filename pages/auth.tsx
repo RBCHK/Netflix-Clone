@@ -4,6 +4,7 @@ import { useCallback, useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
+import { useRouter } from 'next/navigation';
 import Input from '../components/Input';
 
 const Auth = () => {
@@ -11,6 +12,7 @@ const Auth = () => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [variant, setVariant] = useState('login');
+  const router = useRouter();
 
   const toggleVariant = useCallback(() => {
     setVariant((currentVariant) =>
@@ -45,9 +47,14 @@ const Auth = () => {
 
   return (
     <div className='relative h-full w-full bg-[url("/images/hero.jpg")] bg-no-repeat bg-center bg-fixed bg-cover'>
-      <div className="bg-black w-full h-full lg:bg-opacity-50">
-        <nav className="px-12 py-5">
-          <img src="/images/logo.png" alt="Logo" className="h-12" />
+      <div className="px-36 min-h-screen bg-[linear-gradient(to_bottom,_rgba(0,0,0,0.9),_rgba(0,0,0,0.2),_rgba(0,0,0,0.9))] relative z-10">
+        <nav className="px-6 py-6">
+          <img
+            src="/images/logo.png"
+            alt="Logo"
+            className="h-10 cursor-pointer"
+            onClick={() => router.push('/')}
+          />
         </nav>
         <div className="flex justify-center">
           <div className="bg-black bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
@@ -57,6 +64,23 @@ const Auth = () => {
             <div className="flex flex-col gap-4">
               {variant === 'register' && (
                 <Input
+                  className="
+                block 
+                rounded-sm
+                border
+                border-zinc-600
+                text-md 
+                text-white
+                bg-neutral-900
+                bg-opacity-70
+                appearance-none
+                focus:outline-none 
+                focus:ring-0
+                peer
+                p-6
+                h-14
+                w-full
+                "
                   id="name"
                   label="Username"
                   onChange={(e: any) => setName(e.target.value)}
@@ -65,6 +89,24 @@ const Auth = () => {
                 />
               )}
               <Input
+                className="
+                 block 
+                 rounded-sm
+                 border
+                 border-zinc-600
+                 text-md 
+                 text-white
+                 bg-neutral-900
+                 bg-opacity-70
+                 appearance-none
+                 focus:outline-none 
+                 focus:ring-0
+                 peer
+                 px-6
+                 pt-4
+                 h-14
+                 w-full
+                 "
                 id="email"
                 label="Email"
                 onChange={(e: any) => setEmail(e.target.value)}
@@ -72,6 +114,24 @@ const Auth = () => {
                 type="email"
               />
               <Input
+                className="
+                 block 
+                 rounded-sm
+                 border
+                 border-zinc-600
+                 text-md 
+                 text-white
+                 bg-neutral-900
+                 bg-opacity-70
+                 appearance-none
+                 focus:outline-none 
+                 focus:ring-0
+                 peer
+                 px-6
+                 pt-4
+                 h-14
+                 w-full
+                 "
                 id="password"
                 label="Password"
                 onChange={(e: any) => setPassword(e.target.value)}

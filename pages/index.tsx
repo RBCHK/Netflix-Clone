@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useRouter } from 'next/router';
 import Button from '../components/Button';
 import Input from '../components/Input';
 
@@ -8,10 +9,11 @@ const Landing = () => {
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [variant, setVariant] = useState('login');
+  const router = useRouter();
 
   return (
     <div className='relative h-full w-full bg-[url("/images/hero.jpg")] bg-no-repeat bg-center bg-fixed bg-cover'>
-      <div className="px-36 min-h-screen bg-[linear-gradient(to_bottom,_rgba(0,0,0,1.2),_rgba(0,0,0,0.2),_rgba(0,0,0,1.2))] relative z-10">
+      <div className="px-36 min-h-screen bg-[linear-gradient(to_bottom,_rgba(0,0,0,0.9),_rgba(0,0,0,0.2),_rgba(0,0,0,0.9))] relative z-10">
         <nav className="py-6 flex justify-between items-center w-full">
           <img src="/images/logo.png" alt="Logo" className="h-10" />
           <div className="flex">
@@ -42,7 +44,9 @@ const Landing = () => {
               rounded-sm
               px-4
               h-8
-              ml-4"
+              ml-4
+              "
+              onClick={() => router.push('/auth')}
             >
               Sign In
             </Button>
@@ -66,7 +70,7 @@ const Landing = () => {
               <Input
                 className="
                 block 
-                rounded-md
+                rounded-sm
                 border
                 border-zinc-600
                 text-md 
@@ -77,15 +81,16 @@ const Landing = () => {
                 focus:outline-none 
                 focus:ring-0
                 peer
-                p-6
+                px-6
+                pt-4
                 h-14
                 w-96
                 "
-                id="name"
+                id="email"
                 label="Email address"
-                onChange={(e: any) => setName(e.target.value)}
-                value={name}
-                type="name"
+                onChange={(e: any) => setEmail(e.target.value)}
+                value={email}
+                type="email"
               />
               <Button
                 className="
