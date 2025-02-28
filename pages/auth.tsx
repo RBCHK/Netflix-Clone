@@ -5,7 +5,7 @@ import { useCallback, useState } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
-import Input from '@/components/Input';
+//import Input from '@/components/Input';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -34,11 +34,7 @@ const Auth = () => {
 
   const register = useCallback(async () => {
     try {
-      await axios.post('/api/register', {
-        name,
-        email,
-        password,
-      });
+      await axios.post('/api/register', { name, email, password });
       login();
     } catch (error) {
       console.log(error);
@@ -61,7 +57,7 @@ const Auth = () => {
             <h2 className="text-white text-4xl mb-8 font-semibold">
               {variant === 'login' ? 'Sign In' : 'Sign Up'}
             </h2>
-            <div className="flex flex-col gap-4">
+            {/*<div className="flex flex-col gap-4">
               {variant === 'register' && (
                 <Input
                   className="
@@ -138,7 +134,7 @@ const Auth = () => {
                 value={password}
                 type="password"
               />
-            </div>
+            </div>*/}
             <button
               onClick={variant === 'register' ? register : login}
               className="bg-red-600 text-white py-3 rounded-md w-full mt-10 hover:bg-red-700 transition"
