@@ -48,7 +48,7 @@ const Landing = () => {
               "
               onClick={() => router.push('/auth')}
             >
-              Sign In
+              Sign In!
             </Button>
           </div>
         </nav>
