@@ -1,8 +1,8 @@
-import useBillboard from '@/hooks/useBillboard';
-
-import useInfoModal from '@/hooks/useInfoModal';
 import { useCallback } from 'react';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
+
+import useBillboard from '@/hooks/useBillboard';
+import useInfoModal from '@/hooks/useInfoModal';
 import PlayButton from './PlayButton';
 
 const Billboard = () => {
