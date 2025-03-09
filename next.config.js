@@ -1,19 +1,12 @@
 /** @type {import('next').NextConfig} */
+const path = require('path');
+
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    esmExternals: false
-  },
   webpack: (config) => {
-    config.resolve = {
-      ...config.resolve,
-      alias: {
-        ...config.resolve.alias,
-        '@': '.',
-      },
-      extensionAlias: {
-        '.js': ['.js', '.ts', '.tsx']
-      }
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname),
     };
     return config;
   },
