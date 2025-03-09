@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 
 interface InputProps {
   id: string;
   label: string;
-  onChange: any;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   value: string;
   type?: string;
   className?: string;
@@ -51,4 +51,4 @@ const Input: React.FC<InputProps> = ({
   );
 };
 
-export default Input;
+export default Input; 

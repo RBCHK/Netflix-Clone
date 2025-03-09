@@ -1,11 +1,11 @@
 import axios from 'axios';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, ChangeEvent } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
-//import Input from '@/components/Input';
+import Input from '@/components/Input';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -57,7 +57,7 @@ const Auth = () => {
             <h2 className="text-white text-4xl mb-8 font-semibold">
               {variant === 'login' ? 'Sign In' : 'Sign Up'}
             </h2>
-            {/*<div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4">
               {variant === 'register' && (
                 <Input
                   className="
@@ -79,9 +79,9 @@ const Auth = () => {
                 "
                   id="name"
                   label="Username"
-                  onChange={(e: any) => setName(e.target.value)}
+                  onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
                   value={name}
-                  type="name"
+                  type="text"
                 />
               )}
               <Input
@@ -105,7 +105,7 @@ const Auth = () => {
                  "
                 id="email"
                 label="Email"
-                onChange={(e: any) => setEmail(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                 value={email}
                 type="email"
               />
@@ -130,16 +130,16 @@ const Auth = () => {
                  "
                 id="password"
                 label="Password"
-                onChange={(e: any) => setPassword(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
                 value={password}
                 type="password"
               />
-            </div>*/}
+            </div>
             <button
               onClick={variant === 'register' ? register : login}
               className="bg-red-600 text-white py-3 rounded-md w-full mt-10 hover:bg-red-700 transition"
             >
-              {variant === 'login' ? 'Sign In' : 'Sigh up'}
+              {variant === 'login' ? 'Sign In' : 'Sign up'}
             </button>
             <div className="flex justify-center mt-8 gap-6 ">
               <div
@@ -161,7 +161,7 @@ const Auth = () => {
             <div className="text-neutral-500 mt-12">
               {variant === 'login'
                 ? 'New to Netflix?'
-                : 'Alrady have an accaunt?'}
+                : 'Already have an account?'}
               <span
                 onClick={toggleVariant}
                 className="text-white m-2 hover:underline cursor-pointer"
