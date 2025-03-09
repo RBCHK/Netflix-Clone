@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import { ChangeEvent } from 'react';
 
 interface InputProps {
   id: string;
@@ -9,14 +9,14 @@ interface InputProps {
   className?: string;
 }
 
-const Input: React.FC<InputProps> = ({
+const Input = ({
   id,
   label,
   onChange,
   value,
   type,
   className = '',
-}) => {
+}: InputProps) => {
   return (
     <div className="relative">
       <input
@@ -42,7 +42,7 @@ const Input: React.FC<InputProps> = ({
           peer-placeholder-shown:translate-y-0
           peer-focus:scale-75
           peer-focus:-translate-y-4
-          "
+        "
         htmlFor={id}
       >
         {label}
