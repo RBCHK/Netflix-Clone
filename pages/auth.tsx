@@ -5,7 +5,7 @@ import { useCallback, useState, ChangeEvent } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
-import Input from '@/components/Input';
+import AuthInput from '../components/AuthInput';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
@@ -59,7 +59,7 @@ const Auth = () => {
             </h2>
             <div className="flex flex-col gap-4">
               {variant === 'register' && (
-                <Input
+                <AuthInput
                   className="
                 block 
                 rounded-sm
@@ -84,7 +84,7 @@ const Auth = () => {
                   type="text"
                 />
               )}
-              <Input
+              <AuthInput
                 className="
                  block 
                  rounded-sm
@@ -109,7 +109,7 @@ const Auth = () => {
                 value={email}
                 type="email"
               />
-              <Input
+              <AuthInput
                 className="
                  block 
                  rounded-sm
