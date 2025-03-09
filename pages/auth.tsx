@@ -5,7 +5,7 @@ import { useCallback, useState, ChangeEvent } from 'react';
 import { FaGithub } from 'react-icons/fa';
 import { FcGoogle } from 'react-icons/fc';
 
-import Input from '@/components/Input';
+import Input from '../components/Input';
 
 const Auth = () => {
   const [email, setEmail] = useState('');
